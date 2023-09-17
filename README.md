@@ -25,7 +25,7 @@ vim /etc/openfortivpn/config
 ## メモ
 - このスクリプトでは、--pppd-accept-remoteを使用している。最近のppp(2.5.0.以上)のエラーを解決するために使うオプションで
 --ipcp-accept-remoteをつけてpppdを実行するものらしい。openfortivpn --pppd-accept-remoteの代わりに以下を追記するとオプションなしで
-実行できる。openfortiguiやその他のクライアントのエラーはこの操作で解決することがある。
+実行できる。pppのバージョンが2.5.0以上の場合openfortiguiやその他のクライアントのエラーはこの操作で解決することがある。
 ```
 $ vim /etc/ppp/options
 
