@@ -1,1 +1,28 @@
-# openfortivppn-script
+# openfortivpn-script
+
+## 使い方
+- ファイルの権限を変える(パスワードベタ塗りなので自分以外の読み取り権限を外す)
+```
+git clone https://github.com/naoya0117/openfortivpn-script.git
+cd openfortivpn-script
+chmod a+x ./vpn
+chmoe go-r ./vpn
+```
+- sudoパスワード,接続確認用のサーバ,vpn名(何でも良い)変数を編集
+```
+vim ./vpn
+```
+- openfortivpnの設定
+```
+vim /etc/openfortivpn/config
+```
+- 実行
+```
+./vpn [up|down]
+```
+
+
+
+
+
+
