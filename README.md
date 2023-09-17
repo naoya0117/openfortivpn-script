@@ -1,7 +1,7 @@
 # openfortivpn-script
 
 ## 使い方
-- ファイルの権限を変える(パスワードベタ塗りなので自分以外の読み取り権限を外す)
+- ファイルの権限を変える(パスワードベタ塗りなので自分以外の読み込み権限を外す)
 ```
 git clone https://github.com/naoya0117/openfortivpn-script.git
 cd openfortivpn-script
