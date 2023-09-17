@@ -1,0 +1,38 @@
+#!/bin/bash
+
+### replace with your own environment
+PASSWORD=YourPassword
+VPN_NAME=VPN_NAME
+SERVER=ping_server
+#####################################
+
+timeout=2
+count=2
+script_name=$(basename $0)
+
+echo ${PASSWORD} | sudo -Svp ""
+
+
+if [[ "$1" == "up" ]] ; then
+    [ -n "$(pgrep openfortivpn)" ] && notify-send -a "openfortivpn" "openfortivpn" "openfortivpn is already running!" && exit 0
+    
+    sudo -Eb openfortivpn --pppd-accept-remote 1>/dev/null 2>&1 
+    sleep 2
+
+    responce="$(ping -c ${count} -W ${timeout} ${SERVER} 2>/dev/null | grep 'bytes from' | wc -l)"
+    [ ${responce} -gt 0 ] && notify-send -a "openfortivpn" "openfortivpn" "${VPN_NAME} is activated" && exit 0
+
+    sudo  killall openfortivpn 1>/dev/null 2>&1
+
+    notify-send -a "openfortivpn" "openfortivpn" "Failed to connect ${VPN_NAME}. Please retry."
+    
+
+elif [[ "$1" == "down" ]] ; then
+
+
+    sudo killall openfortivpn 1>/dev/null 2>&1
+    [ $? -eq 0 ] && notify-send -a "openfortivpn" "openfortivpn" "Disconnected from ${VPN_NAME}"
+
+else
+    echo "Usage: ${script_name} [up|down]"
+fi

@@ -1,1 +1,1 @@
-# openfortivpn-script
+# openfortivppn-script
